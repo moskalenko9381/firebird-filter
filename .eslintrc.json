@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["./tsconfig.json"]
+    },
+    "plugins": ["@typescript-eslint", "prettier"],
+    "rules": {
+        "semi": "warn",
+        "indent": "warn",
+        "no-multi-spaces": "warn",
+        "space-in-parens": "warn",
+        "no-multiple-empty-lines": "warn",
+        "prefer-const": "warn",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-loss-of-precision": "off",
+        "quotes": ["warn", "double", { "avoidEscape": true }],
+        "no-case-declarations": 0
+    },
+    "settings": {
+        "node": {
+            "extensions": [".ts", ".tsx", ".json"]
+        }
+    }
+}

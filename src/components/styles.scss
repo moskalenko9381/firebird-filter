@@ -1,0 +1,243 @@
+$hover-green: rgba(107, 142, 35, 0.3);
+$green-item: rgba(143, 188, 143, 0.3);
+$beige-item: rgb(250, 235, 215, 0.5);
+$highlight: rgba(255, 215, 0, 1);
+$delete-button-hover: rgba(255, 165, 0, 0.3);
+
+@mixin hover {
+  &:hover:enabled {
+    background: $hover-green;
+  }
+  &:disabled:hover {
+    cursor: not-allowed;
+  }
+}
+@mixin center-div {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+div.main-block {
+  padding-top: 5em;
+  padding-right: 5em;
+  height: 100%;
+  font-size: larger;
+  ul {
+    min-width: 10em;
+    // padding-left: 5em;
+    li {
+      cursor: pointer;
+      margin-top: 0.5em;
+      &:nth-child(even) {
+        background-color: $green-item;
+      }
+      &:nth-child(odd) {
+        background-color: $beige-item;
+      }
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 0.7em;
+      justify-content: space-between;
+      div.spans-container {
+        display: flex;
+        padding: 0.5em;
+        min-width: 10em;
+        width: 70%;
+        align-items: flex-start;
+        flex-direction: column;
+        > div {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+        span {
+          display: inline-block;
+          text-overflow: initial;
+          overflow: hidden;
+          white-space: break-spaces;
+        }
+        span.highlighted {
+          background-color: $highlight;
+        }
+        > div span:last-child {
+          text-overflow: ellipsis;
+        }
+      }
+      > div.delete-button-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        padding-right: 0.5em;
+        > button {
+          margin-left: auto;
+          background: none;
+          cursor: pointer;
+          border: none;
+          img {
+            padding-top: 0.3em;
+          }
+          // @include hover;
+          &:hover {
+            background-color: $delete-button-hover;
+          }
+        }
+      }
+    }
+  }
+  .modal {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10em;
+    transform: translate(-50%, -60%);
+    // padding: 1em;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    transition: opacity 400ms ease-in;
+  }
+
+  div.help-buttons {
+    display: flex;
+    column-gap: 3em;
+    row-gap: 1em;
+    flex-wrap: wrap;
+    padding-left: 2em;
+    align-items: center;
+    label {
+      font-size: x-large;
+    }
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      align-items: center;
+      input {
+        min-width: 10em;
+        line-height: 1.5em;
+        font-size: large;
+        outline-color: rgba(107, 142, 35, 0.5);
+      }
+    }
+    button {
+      line-height: 2em;
+      cursor: pointer;
+      font-size: large;
+      @include hover;
+      border: none;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+    }
+  }
+  div.no-results {
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+  }
+}
+
+.modal-dialog {
+  width: 70%;
+  font-size: x-large;
+  @include center-div;
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 15px;
+      border-bottom: 1px solid #eceeef;
+      .modal-title {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 1.5;
+        font-weight: 500;
+        font-size: larger;
+      }
+    }
+  }
+}
+
+.close {
+  float: right;
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  color: indianred;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  border: none;
+  background: none;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: orangered;
+    background: $beige-item;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+  }
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1em;
+  overflow: auto;
+  // font-size: larger;
+  > div {
+    padding-bottom: 0.5em;
+    p.company-catchphrase {
+      margin-block: 0.5em;
+      font-style: italic;
+    }
+  }
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+  .delete-container {
+    display: flex;
+    gap: 10%;
+    justify-content: center;
+    flex-wrap: wrap;
+    button {
+      border: none;
+      margin-left: 0;
+      font-size: x-large;
+      &:first-child {
+        background: $green-item;
+        @include hover;
+      }
+      &:nth-child(2) {
+        background: rgba(250, 92, 92, 0.3);
+        &:hover {
+          background: rgba(250, 92, 92, 0.6);
+        }
+        //background: indianred;
+      }
+    }
+  }
+}
+
+.address-block {
+  .location-container {
+    display: flex;
+    align-items: center;
+    p {
+      margin-bottom: 0.5em;
+    }
+  }
+}
