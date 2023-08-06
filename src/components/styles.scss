@@ -14,16 +14,16 @@ $delete-button-hover: rgba(255, 165, 0, 0.3);
 }
 @mixin center-div {
   position: relative;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, 0%);
 }
 
 div.main-block {
-  padding-top: 2em;
+  padding-top: 1em;
   padding-right: 5em;
   height: 100%;
-  font-size: larger;
+  font-size: large;
   ul {
     min-width: 10em;
     // padding-left: 5em;
@@ -88,12 +88,12 @@ div.main-block {
   }
   .modal {
     position: fixed;
-    top: 50%;
+    top: 30%;
     left: 50%;
     width: 100%;
     height: 100%;
     padding-bottom: 10em;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
     // padding: 1em;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1050;
@@ -140,8 +140,8 @@ div.main-block {
 }
 
 .modal-dialog {
-  width: 70%;
-  font-size: x-large;
+  width: 80%;
+  font-size: 20px;
   @include center-div;
   .modal-content {
     position: relative;
@@ -213,6 +213,7 @@ div.main-block {
     gap: 10%;
     justify-content: center;
     flex-wrap: wrap;
+    row-gap: 1em;
     button {
       border: none;
       margin-left: 0;
