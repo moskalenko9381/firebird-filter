@@ -2,7 +2,7 @@ export const getIndexes = (source: string, substring: string) => {
     const occurenceIndexes: number[] = [];
     const length = substring.length;
     let index = source.indexOf(substring);
-    while (index >= 0 && index + length < source.length) {
+    while (index >= 0 && index + length <= source.length) {
         occurenceIndexes.push(index);
         const sliced = source.slice(index + length);
         const newIndex = sliced.indexOf(substring);
@@ -11,5 +11,6 @@ export const getIndexes = (source: string, substring: string) => {
         }
         index = newIndex + Math.abs(source.length - sliced.length);
     }
+    console.log("Indexes:", occurenceIndexes, source, substring, source.length);
     return occurenceIndexes;
 };
