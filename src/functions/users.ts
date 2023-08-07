@@ -11,6 +11,5 @@ export const getIndexes = (source: string, substring: string) => {
         }
         index = newIndex + Math.abs(source.length - sliced.length);
     }
-    console.log("Indexes:", occurenceIndexes, source, substring, source.length);
     return occurenceIndexes;
 };
